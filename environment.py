@@ -31,7 +31,7 @@ class Environment:
 		os.environ["falls"] = "0"
 		os.environ["session"] = "0"
 		os.environ["attempt"] = "1"
-		pygame.mixer.set_num_channels(16)
+		# pygame.mixer.set_num_channels(16)
 
 		self._load_settings()
 		self._load_stats()

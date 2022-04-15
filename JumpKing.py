@@ -293,6 +293,7 @@ def train():
 
     for e in range(num_episode):
         done, screen_arr = env.reset()
+        env.reset_saved_frames()
 
         #initial state 4 screens of start position
         state = convert_screens_to_state(screen_arr)

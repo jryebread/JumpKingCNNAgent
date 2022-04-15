@@ -95,6 +95,9 @@ class JKGame:
                     and (not self.king.isSplat or self.king.splatCount > self.king.splatDuration)
         return available
 
+    def reset_saved_frames(self):
+        self.saved_frames = deque([])
+        self.frame_counter = 0
 
     def step(self, action, model_dict=None):
         # isnt this an issue that the old_level, old_y value is always the spawn position?
