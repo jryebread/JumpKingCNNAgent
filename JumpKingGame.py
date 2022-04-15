@@ -41,9 +41,9 @@ class JKGame:
 
         self.screen = pygame.display.set_mode(
                                               (int(os.environ.get("screen_width")) * int(os.environ.get("window_scale")), int(os.environ.get("screen_height")) * int
-                                                  (os.environ.get("window_scale"))), pygame.HWSURFACE |pygame.DOUBLEBUF  )  # |pygame.SRCALPHA)
+                                                  (os.environ.get("window_scale"))) )  # |pygame.SRCALPHA)
 
-        self.game_screen = pygame.Surface((int(os.environ.get("screen_width")), int(os.environ.get("screen_height"))), pygame.HWSURFACE |pygame.DOUBLEBUF  )  # |pygame.SRCALPHA)
+        self.game_screen = pygame.Surface((int(os.environ.get("screen_width")), int(os.environ.get("screen_height"))) )  # |pygame.SRCALPHA)
 
         self.game_screen_x = 0
 
