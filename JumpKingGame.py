@@ -20,12 +20,14 @@ from Level import Levels
 from Menu import Menus
 import torch
 from Start import Start
+from collections import deque
+import itertools
 
 
 class JKGame:
     """ Overall class to manga game aspects """
 
-    def __init__(self, max_step=float('inf')):
+    def __init__(self, max_step=float('inf'),):
 
         pygame.init()
 
@@ -60,6 +62,9 @@ class JKGame:
         self.step_counter = 0
         self.max_step = max_step
 
+        self.saved_frames = deque(maxlen=10000) #save every non-skipped frame (n=4)
+        self.frame_counter = 0
+        self.frame_skip = 4
         self.visited = {}
         self.levels_visited = {}
 
@@ -77,12 +82,12 @@ class JKGame:
 
         self.step_counter = 0
         done = False
-        state = [self.king.levels.current_level, self.king.x, self.king.y, self.king.jumpCount]
+        screen = pygame.surfarray.array3d(pygame.display.get_surface())
 
         self.visited = {}
         self.visited[(self.king.levels.current_level, self.king.y)] = 1
 
-        return done, state
+        return done, [screen, screen, screen, screen]
 
     def move_available(self):
         available = not self.king.isFalling \
@@ -90,14 +95,21 @@ class JKGame:
                     and (not self.king.isSplat or self.king.splatCount > self.king.splatDuration)
         return available
 
+
     def step(self, action, model_dict=None):
         # isnt this an issue that the old_level, old_y value is always the spawn position?
         old_level = self.king.levels.current_level
         old_y = self.king.y
         # old_y = (self.king.levels.max_level - self.king.levels.current_level) * 360 + self.king.y
+        reward = 0
         # This while true is needed to wait for the agent if he is mid jump to come down
         while True:
-            self.clock.tick(self.fps)
+            self.clock.tick() #self.fps once per frame, this returns how many ms have passed since previous call
+
+            if self.frame_counter % self.frame_skip == 0:  # save every 4th frame
+                self.saved_frames.append(pygame.surfarray.array3d(pygame.display.get_surface()))
+            self.frame_counter += 1
+
             self._check_events(model_dict)
             if not os.environ["pause"]:
                 if not self.move_available():
@@ -111,31 +123,35 @@ class JKGame:
 
             if self.move_available():
                 self.step_counter += 1
-                state = [self.king.levels.current_level, self.king.x, self.king.y, self.king.jumpCount]
+                # state = [self.king.levels.current_level, self.king.x, self.king.y, self.king.jumpCount]
                 ##################################################################################################
                 # Define the reward from environment                                                             #
                 ##################################################################################################
                 # if we got to a new level, or if we have a higher y position, give us a positive  reward!
                 if self.king.levels.current_level > old_level and self.king.levels.current_level not in self.levels_visited:
-                    reward = 50000 * self.king.levels.current_level
+                    reward += 50000 * self.king.levels.current_level
                 elif self.king.levels.current_level < old_level:
                     print("OH NO WENT BACK A LVL")
-                    reward = -10000
+                    reward += -10000
                 elif self.king.levels.current_level == old_level and self.king.y < old_y:
-                    reward = self.king.levels.current_level  # used to be just 0, now we give reward for being in a higher level
+                    reward += (self.king.levels.current_level + 1) * 10  # used to be just 0, now we give reward for being in a higher level
                 else:
                     # negative reward + 1
-                    self.visited[(self.king.levels.current_level, self.king.y)] = self.visited.get \
-                        ((self.king.levels.current_level, self.king.y), 0) + 1
+                    self.visited[(self.king.levels.current_level, self.king.y)] = self.visited.get((self.king.levels.current_level, self.king.y), 0) + 1
                     # if our reward and y visited value is less than the episode starting position reward and y visited value, set it to the old +1
                     if (old_level, old_y) in self.visited and self.visited[(self.king.levels.current_level, self.king.y)] < self.visited[(old_level, old_y)]:
                         self.visited[(self.king.levels.current_level, self.king.y)] = self.visited[(old_level, old_y)] + 1
 
-                    reward = -self.visited[(self.king.levels.current_level, self.king.y)]
+                    reward += -self.visited[(self.king.levels.current_level, self.king.y)]
                 ####################################################################################################
                 self.levels_visited[self.king.levels.current_level] = True
                 done = True if self.step_counter > self.max_step else False
-                return state, reward, done
+                #return state
+                if len(self.saved_frames) >= self.frame_skip:
+                    state = list(itertools.islice(self.saved_frames, self.frame_skip))
+                    self.saved_frames.popleft()
+                    return state, reward, done
+
 
     def running(self):
         """
