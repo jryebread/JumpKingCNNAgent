@@ -100,11 +100,11 @@ class Readable:
 
 		self.text = ""
 
-		self.channel = pygame.mixer.Channel(9)
+		# self.channel = pygame.mixer.Channel(9)
 
 		self.channel_counter = 1
 
-		self.audio = pygame.mixer.Sound("Audio\\Misc\\talking.wav")
+		# self.audio = pygame.mixer.Sound("Audio\\Misc\\talking.wav")
 
 	def update(self, king):
 

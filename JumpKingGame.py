@@ -55,9 +55,9 @@ class JKGame:
 
         self.babe = Babe(self.game_screen, self.levels)
 
-        self.menus = Menus(self.game_screen, self.levels, self.king)
-
-        self.start = Start(self.game_screen, self.menus)
+        # self.menus = Menus(self.game_screen, self.levels, self.king)
+        #
+        # self.start = Start(self.game_screen, self.menus)
 
         self.step_counter = 0
         self.max_step = max_step
@@ -183,13 +183,13 @@ class JKGame:
 
                 self.environment.save()
 
-                self.menus.save()
+                # self.menus.save()
 
                 sys.exit()
 
             if event.type == pygame.KEYDOWN:
 
-                self.menus.check_events(event)
+                # self.menus.check_events(event)
                 if event.key == pygame.K_ESCAPE:
                     if model_dict is not None:
                         torch.save(model_dict, 'agent_models/agent_model' + str(uuid.uuid4()))
@@ -213,14 +213,14 @@ class JKGame:
         self.levels.update_levels(self.king, self.babe, agentCommand=action)
 
     def _update_guistuff(self):
-
-        if self.menus.current_menu:
-
-            self.menus.update()
-
-        if not os.environ["gaming"]:
-
-            self.start.update()
+        pass
+        # if self.menus.current_menu:
+        #
+        #     self.menus.update()
+        #
+        # if not os.environ["gaming"]:
+        #
+        #     self.start.update()
 
     def _update_gamescreen(self):
 
@@ -248,11 +248,11 @@ class JKGame:
 
             self._shake_screen()
 
-        if not os.environ["gaming"]:
-
-            self.start.blitme()
-
-        self.menus.blitme()
+        # if not os.environ["gaming"]:
+        #
+        #     self.start.blitme()
+        #
+        # self.menus.blitme()
 
         self.screen.blit(pygame.transform.scale(self.game_screen, self.screen.get_size()), (self.game_screen_x, 0))
 

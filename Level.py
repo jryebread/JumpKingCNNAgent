@@ -208,15 +208,13 @@ class Levels:
 
 		self.update_hiddenwalls(king)
 
-		self.update_npcs(king)
+		# self.update_npcs(king)
 
 		self.update_readables(king)
 
 		self.update_flyers(king)
 
 		self.update_discovery(king)
-
-		self.update_audio()
 
 		if self.ending:
 
@@ -241,38 +239,6 @@ class Levels:
 		except Exception as e:
 
 			print("UPDATEFLYERS ERROR: ", e)
-
-	def update_audio(self):
-
-		try:
-
-			if not self.ending:
-
-				current_level = self.levels[self.current_level]
-
-				for index, audio in enumerate(current_level.background_audio):
-
-					if not audio:
-
-						self.channels[index].stop()
-
-					elif audio != [channel.get_sound() for channel in self.channels][index]:
-
-						self.channels[index].play(audio)
-
-				self.names.play_audio()
-
-			else:
-
-				for channel in self.channels:
-
-					channel.stop()
-
-				self.Ending_Animation.update_audio()
-
-		except Exception as e:
-
-			print("UPDATEAUDIO ERROR: ", e)
 
 	def update_discovery(self, king):
 
@@ -312,17 +278,17 @@ class Levels:
 
 			print("UPDATEREADABLES ERROR:", e)
 
-	def update_npcs(self, king):
-
-		try:
-
-			for npc in self.npcs.values():
-
-				npc.update(king)
-
-		except Exception as e:
-
-			print("UPDATENPCS ERROR:", e)
+	# def update_npcs(self, king):
+	#
+	# 	try:
+	#
+	# 		for npc in self.npcs.values():
+	#
+	# 			npc.update(king)
+	#
+	# 	except Exception as e:
+	#
+	# 		print("UPDATENPCS ERROR:", e)
 
 	def update_hiddenwalls(self, king):
 

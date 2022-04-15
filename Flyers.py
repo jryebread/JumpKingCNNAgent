@@ -57,10 +57,10 @@ class Crow(Flyer):
 		self.filename1, self.filename2 = "raven_fly.png", "raven_idle.png"
 
 		self.direction = direction
-
-		self.channel = pygame.mixer.Channel(12)
-
-		self.audio = pygame.mixer.Sound("Audio\\Misc\\bird_fly.wav")
+		#
+		# self.channel = pygame.mixer.Channel(12)
+		#
+		# self.audio = pygame.mixer.Sound("Audio\\Misc\\bird_fly.wav")
 
 		self.reverse = reverse
 
@@ -150,9 +150,9 @@ class Angels(Flyer):
 
 		self.images["NoCrown"] = self.spritesheet.load_grid(self.start_rect1, 2, 1, -1)
 
-		self.channel = pygame.mixer.Channel(11)
-
-		self.audio = pygame.mixer.Sound("Audio\\Misc\\plink.wav")
+		# self.channel = pygame.mixer.Channel(11)
+		#
+		# self.audio = pygame.mixer.Sound("Audio\\Misc\\plink.wav")
 
 		self.active = False
 

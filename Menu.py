@@ -26,10 +26,10 @@ class Menus:
 		self.font = pygame.font.Font("Fonts\\ttf_pixolde_bold.ttf", 16)
 
 		self.current_menu = None
-
-		self.channels = [pygame.mixer.Channel(13), pygame.mixer.Channel(14)]
-
-		self.audio = self._load_audio("Audio\\gui_sfx")
+		#
+		# self.channels = [pygame.mixer.Channel(13), pygame.mixer.Channel(14)]
+		#
+		# self.audio = self._load_audio("Audio\\gui_sfx")
 
 		self.images = self._load_images(self.directory)
 

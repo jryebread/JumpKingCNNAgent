@@ -41,9 +41,9 @@ class NPC:
 
 		self.font = pygame.font.Font("Fonts\\ttf_pixolde.ttf", 14)
 
-		self.audio = pygame.mixer.Sound("Audio\\Misc\\talking.wav")
+		# self.audio = pygame.mixer.Sound("Audio\\Misc\\talking.wav")
 
-		self.channel = pygame.mixer.Channel(9)
+		# self.channel = pygame.mixer.Channel(9)
 
 		self.text = ""
 

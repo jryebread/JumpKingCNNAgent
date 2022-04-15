@@ -71,9 +71,9 @@ class Babe(King):
 
 		# Audio
 
-		self.channel = pygame.mixer.Channel(10)
-
-		self.audio = Babe_Audio().audio
+		# self.channel = pygame.mixer.Channel(10)
+		#
+		# self.audio = Babe_Audio().audio
 
 		# Physics
 
