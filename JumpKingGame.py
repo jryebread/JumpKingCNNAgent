@@ -38,10 +38,11 @@ class JKGame:
         self.fps = 800
 
         self.bg_color = (0, 0, 0)
+        os.putenv('SDL_VIDEODRIVER', 'fbcon')
 
         self.screen = pygame.display.set_mode(
-                                              (int(os.environ.get("screen_width")) * int(os.environ.get("window_scale")), int(os.environ.get("screen_height")) * int
-                                                  (os.environ.get("window_scale"))) )  # |pygame.SRCALPHA)
+                                              (int(os.environ.get("screen_width")) , int(os.environ.get("screen_height"))
+                                                 ) )  # |pygame.SRCALPHA)
 
         self.game_screen = pygame.Surface((int(os.environ.get("screen_width")), int(os.environ.get("screen_height"))) )  # |pygame.SRCALPHA)
 
@@ -245,8 +246,8 @@ class JKGame:
             self.levels.blit2()
 
         if os.environ["gaming"]:
-
-            self._shake_screen()
+            pass
+            # self._shake_screen()
 
         # if not os.environ["gaming"]:
         #
