@@ -13,11 +13,11 @@ class Names:
 
 	def __init__(self):
 
-		self.font = pygame.font.Font("Fonts\\ttf_pixolde_bold.ttf", 16)
+		self.font = pygame.font.Font("Fonts/ttf_pixolde_bold.ttf", 16)
 
-		self.small_font = pygame.font.Font("Fonts\\ttf_pixolde_bold.ttf", 12)
+		self.small_font = pygame.font.Font("Fonts/ttf_pixolde_bold.ttf", 12)
 
-		# self.audio = pygame.mixer.Sound("Audio\\Misc\\new_location.wav")
+		# self.audio = pygame.mixer.Sound("Audio/Misc/new_location.wav")
 
 		# self.audio.set_volume(1.0)
 

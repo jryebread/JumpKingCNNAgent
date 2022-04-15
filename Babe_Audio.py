@@ -21,9 +21,9 @@ class Babe_Audio:
 
 	def _load_audio(self, file):
 
-		for audio in os.listdir(f"{self.directory}\\{file}"):
+		for audio in os.listdir(f"{self.directory}/{file}"):
 
-			a = pygame.mixer.Sound(f"{self.directory}\\{file}\\{audio}")
+			a = pygame.mixer.Sound(f"{self.directory}/{file}/{audio}")
 
 			a.set_volume(0.5)
 

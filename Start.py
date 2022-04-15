@@ -41,9 +41,9 @@ class Start:
 
 		audio = {}
 
-		for audio_name in os.listdir("audio\\start"):
+		for audio_name in os.listdir("audio/start"):
 
-			audio[re.match(r"[^.]+", audio_name).group()] = pygame.mixer.Sound(f"audio\\start\\{audio_name}")
+			audio[re.match(r"[^.]+", audio_name).group()] = pygame.mixer.Sound(f"audio/start/{audio_name}")
 
 		return audio		
 
@@ -51,9 +51,9 @@ class Start:
 
 		images = {}
 
-		for image_name in os.listdir("images\\logos"):
+		for image_name in os.listdir("images/logos"):
 
-			images[re.match(r"[^.]+", image_name).group()] = pygame.image.load(f"images\\logos\\{image_name}").convert_alpha()
+			images[re.match(r"[^.]+", image_name).group()] = pygame.image.load(f"images/logos/{image_name}").convert_alpha()
 
 		return images
 
@@ -269,7 +269,7 @@ class Text(Title):
 
 	def __init__(self, text):
 
-		self.font = pygame.font.Font("Fonts\\ttf_pixolde_bold.ttf", 20)
+		self.font = pygame.font.Font("Fonts/ttf_pixolde_bold.ttf", 20)
 
 		self.text = self._fold(text)
 

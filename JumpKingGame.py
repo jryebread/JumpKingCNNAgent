@@ -38,7 +38,7 @@ class JKGame:
         self.fps = 800
 
         self.bg_color = (0, 0, 0)
-        os.putenv('SDL_VIDEODRIVER', 'fbcon')
+        os.environ['SDL_VIDEODRIVER'] = 'dummy'
 
         self.screen = pygame.display.set_mode(
                                               (int(os.environ.get("screen_width")) , int(os.environ.get("screen_height"))
@@ -48,7 +48,7 @@ class JKGame:
 
         self.game_screen_x = 0
 
-        pygame.display.set_icon(pygame.image.load("images\\sheets\\JumpKingIcon.ico"))
+        # pygame.display.set_icon(pygame.image.load("images/sheets/JumpKingIcon.ico"))
 
         self.levels = Levels(self.game_screen)
 

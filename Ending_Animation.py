@@ -23,9 +23,9 @@ class Ending_Animation:
 
 		self.channel = pygame.mixer.Channel(1)
 
-		self.ending_music = pygame.mixer.Sound("Audio\\Misc\\ending.wav")
+		self.ending_music = pygame.mixer.Sound("Audio/Misc/ending.wav")
 
-		self.end_image = pygame.image.load("images\\sheets\\imagecrown.png").convert()
+		self.end_image = pygame.image.load("images/sheets/imagecrown.png").convert()
 
 	def update(self, level, king, babe):
 

@@ -14,7 +14,7 @@ class Babe_Sprites():
 
 	def __init__(self):
 
-		self.filename = "images\\sheets\\ending_animations.png"
+		self.filename = "images/sheets/ending_animations.png"
 
 		self.spritesheet = SpriteSheet(self.filename)
 

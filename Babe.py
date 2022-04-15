@@ -61,9 +61,9 @@ class Babe(King):
 
 		# Particles
 
-		self.jump_particle = King_Particle("images\\particles\\jump_particle.png", 5, 1, 32)
+		self.jump_particle = King_Particle("images/particles/jump_particle.png", 5, 1, 32)
 
-		self.snow_jump_particle = King_Particle("images\\particles\\snow_jump_particle.png", 4, 3, 36)
+		self.snow_jump_particle = King_Particle("images/particles/snow_jump_particle.png", 4, 3, 36)
 
 		self.isJump = False
 

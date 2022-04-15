@@ -31,7 +31,7 @@ class Scrollers:
 
 				start_rect = (0, 0, 128, 96)
 
-				spritesheet = SpriteSheet(f"{self.directory}\\{file}")
+				spritesheet = SpriteSheet(f"{self.directory}/{file}")
 
 				images = spritesheet.load_grid(start_rect, 2, 4, -1)
 
@@ -39,7 +39,7 @@ class Scrollers:
 
 			else:
 
-				self.images[file] = pygame.image.load(f"{self.directory}\\{file}").convert_alpha()
+				self.images[file] = pygame.image.load(f"{self.directory}/{file}").convert_alpha()
 
 	def _load_scrollers(self):
 

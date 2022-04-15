@@ -36,7 +36,7 @@ class Weathers:
 
 			if re.search(r"^{weather}\d+".format(weather = weather), file):
 
-				frame = pygame.image.load(f"{self.directory}\\{file}")
+				frame = pygame.image.load(f"{self.directory}/{file}")
 
 				frames.append(frame)
 
@@ -95,7 +95,7 @@ class Weathers:
 
 	def _load_mask(self, file):
 
-		mask = pygame.image.load(f"{self.directory}\\{file}")
+		mask = pygame.image.load(f"{self.directory}/{file}")
 
 		mask = pygame.mask.from_surface(mask)
 
@@ -163,7 +163,7 @@ if __name__ == "__main__":
 	screen = pygame.Surface((480, 360), pygame.SRCALPHA).convert()
 	screen.set_colorkey((0, 255, 0), pygame.RLEACCEL)
 
-	mask = pygame.mask.from_surface(pygame.image.load("weather\\rainmask13.png"))
+	mask = pygame.mask.from_surface(pygame.image.load("weather/rainmask13.png"))
 
 	beta_screen = pygame.Surface((480, 360), pygame.SRCALPHA).convert()
 	beta_screen.set_colorkey((255, 0, 0), pygame.RLEACCEL)
@@ -192,7 +192,7 @@ if __name__ == "__main__":
 
 		wack = pygame.Surface((480, 360), pygame.SRCALPHA).convert()
 
-		rain = pygame.image.load(f"weather\\light_rain{a}.png").convert_alpha()
+		rain = pygame.image.load(f"weather/light_rain{a}.png").convert_alpha()
 
 		for event in pygame.event.get():
 

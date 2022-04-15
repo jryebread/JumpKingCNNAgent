@@ -60,7 +60,7 @@ class Crow(Flyer):
 		#
 		# self.channel = pygame.mixer.Channel(12)
 		#
-		# self.audio = pygame.mixer.Sound("Audio\\Misc\\bird_fly.wav")
+		# self.audio = pygame.mixer.Sound("Audio/Misc/bird_fly.wav")
 
 		self.reverse = reverse
 
@@ -82,9 +82,9 @@ class Crow(Flyer):
 
 		start_rect1, start_rect2 = (0, 0, 48, 32), (0, 0, 32, 32) 
 
-		fly_images = SpriteSheet(f"{self.directory}\\{self.filename1}").load_grid(start_rect1, 3, 2, -1)
+		fly_images = SpriteSheet(f"{self.directory}/{self.filename1}").load_grid(start_rect1, 3, 2, -1)
 
-		idle_images = SpriteSheet(f"{self.directory}\\{self.filename2}").load_grid(start_rect2, 4, 2, -1)
+		idle_images = SpriteSheet(f"{self.directory}/{self.filename2}").load_grid(start_rect2, 4, 2, -1)
 
 		if self.reverse:
 
@@ -138,7 +138,7 @@ class Angels(Flyer):
 
 		super().__init__(x, y)
 
-		self.filename = "images\\sheets\\ending_animations.png"
+		self.filename = "images/sheets/ending_animations.png"
 
 		self.start_rect1, self.start_rect2 = (224, 96, 32, 32), (224, 160, 32, 32)
 
@@ -152,7 +152,7 @@ class Angels(Flyer):
 
 		# self.channel = pygame.mixer.Channel(11)
 		#
-		# self.audio = pygame.mixer.Sound("Audio\\Misc\\plink.wav")
+		# self.audio = pygame.mixer.Sound("Audio/Misc/plink.wav")
 
 		self.active = False
 
