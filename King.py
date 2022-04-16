@@ -186,9 +186,9 @@ class King():
 
 		# Audio
 
-		self.channel = pygame.mixer.Channel(7)
-
-		self.audio = King_Audio().audio
+		# self.channel = pygame.mixer.Channel(7)
+		#
+		# self.audio = King_Audio().audio
 
 		# Physics
 
@@ -252,7 +252,7 @@ class King():
 
 				self._robot_check_events(command)
 
-			self._update_audio1()
+			# self._update_audio1()
 
 			self._update_particles()
 
@@ -266,7 +266,7 @@ class King():
 
 			self._update_sprites()
 
-			self._update_audio2()
+			# self._update_audio2()
 
 			self._check_level()
 
@@ -1088,32 +1088,32 @@ class King():
 			else:
 				self.current_image = self.sprites[self.direction]["King_CollisionFall"]
 
-	def _update_audio1(self):
-
-		if self.lastCollision:
-
-			if self.isJump:
-
-				self.channel.play(self.audio[self.lastCollision.type]["king_jump"])
-
-
-	def _update_audio2(self):
-
-		if self.lastCollision:
-
-			if self.isFalling:
-
-				if any([self.collideTop, self.collideLeft, self.collideRight]) and not self.isWalk:
-
-					self.channel.play(self.audio[self.lastCollision.type]["king_bump"])
-
-			if self.isLanded and not self.isSplat:
-
-				self.channel.play(self.audio[self.lastCollision.type]["king_land"])
-
-			elif self.isLanded and self.isSplat:
-
-				self.channel.play(self.audio[self.lastCollision.type]["king_splat"])
+	# def _update_audio1(self):
+	#
+	# 	if self.lastCollision:
+	#
+	# 		if self.isJump:
+	#
+	# 			self.channel.play(self.audio[self.lastCollision.type]["king_jump"])
+	#
+	#
+	# def _update_audio2(self):
+	#
+	# 	if self.lastCollision:
+	#
+	# 		if self.isFalling:
+	#
+	# 			if any([self.collideTop, self.collideLeft, self.collideRight]) and not self.isWalk:
+	#
+	# 				self.channel.play(self.audio[self.lastCollision.type]["king_bump"])
+	#
+	# 		if self.isLanded and not self.isSplat:
+	#
+	# 			self.channel.play(self.audio[self.lastCollision.type]["king_land"])
+	#
+	# 		elif self.isLanded and self.isSplat:
+	#
+	# 			self.channel.play(self.audio[self.lastCollision.type]["king_splat"])
 
 	def _update_particles(self):
 

@@ -103,13 +103,13 @@ class Levels:
 
 		# Audio
 
-		self.background_audio = BackgroundAudio().level_audio
+		# self.background_audio = BackgroundAudio().level_audio
 
-		self.channels = [pygame.mixer.Channel(2), pygame.mixer.Channel(3), pygame.mixer.Channel(4), pygame.mixer.Channel(5)]
-
-		for channel in self.channels:
-
-			channel.set_volume(1.0)
+		# self.channels = [pygame.mixer.Channel(2), pygame.mixer.Channel(3), pygame.mixer.Channel(4), pygame.mixer.Channel(5)]
+		#
+		# for channel in self.channels:
+		#
+		# 	channel.set_volume(1.0)
 
 		# Movement 
 

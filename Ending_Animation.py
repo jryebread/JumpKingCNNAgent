@@ -21,9 +21,9 @@ class Ending_Animation:
 
 		self.stall_y = 220
 
-		self.channel = pygame.mixer.Channel(1)
+		# self.channel = pygame.mixer.Channel(1)
 
-		self.ending_music = pygame.mixer.Sound("Audio/Misc/ending.wav")
+		# self.ending_music = pygame.mixer.Sound("Audio/Misc/ending.wav")
 
 		self.end_image = pygame.image.load("images/sheets/imagecrown.png").convert()
 
@@ -277,10 +277,10 @@ class Ending_Animation:
 	def update_audio(self):
 
 		try:
-
-			if not self.channel.get_busy():
-
-				self.channel.play(self.ending_music)
+			pass
+			# if not self.channel.get_busy():
+			#
+			# 	self.channel.play(self.ending_music)
 
 		except Exception as e:
 
